@@ -24,7 +24,7 @@ tsc index.ts //将其编译为js 得到index.js
 
 
 
-## [数据类型]()
+## [数据类型](https://github.com/zsczq/LEARN/blob/main/Typescript/%E7%B1%BB%E5%9E%8B/src/index.ts)
 
 boolean	string	number	null	underfined	symbol
 
@@ -160,7 +160,7 @@ function infiniteLoop(): never {
 
 
 
-## [变量声明]()
+## [变量声明](https://github.com/zsczq/LEARN/blob/main/Typescript/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/src/index.ts)
 
 
 
