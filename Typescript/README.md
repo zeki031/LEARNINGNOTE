@@ -1,3 +1,17 @@
+* [TypeScript](#typescript)
+  * [编译](#编译)
+  * [<a href="https://github\.com/zsczq/LEARN/blob/main/Typescript/%E7%B1%BB%E5%9E%8B/src/index\.ts">数据类型</a>](#数据类型)
+    * [Any](#any)
+    * [Object](#object)
+    * [Void](#void)
+    * [Null &amp; Undefined](#null--undefined)
+    * [Never](#never)
+  * [<a href="https://github\.com/zsczq/LEARN/blob/main/Typescript/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/src/index\.ts"> 变量声明</a>](#变量声明)
+  * [类型断言](#类型断言)
+  * [接口](#接口)
+
+
+
 # TypeScript
 
 1. TypeScript是JavaScript的超集
