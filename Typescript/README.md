@@ -27,7 +27,7 @@
 
 需要安装node.js
 
-```
+```typescript
 npm -v 
 npm install -g typescript
 tsc -v
@@ -38,7 +38,7 @@ tsc index.ts //将其编译为js 得到index.js
 
 
 
-## [数据类型](https://github.com/zsczq/LEARN/blob/main/Typescript/%E7%B1%BB%E5%9E%8B/src/index.ts)
+## [类型](https://github.com/zsczq/LEARN/blob/main/Typescript/%E7%B1%BB%E5%9E%8B/src/index.ts)
 
 boolean	string	number	null	underfined	symbol
 
@@ -58,7 +58,7 @@ any是JavaScript中没有的数据类型，它在TypeScript中用于表示任意
 
 建议能不使用any就不去使用any
 
-```
+```typescript
 //any是JavaScript中没有的数据类型，它在TypeScript中用于表示任意类型
 let any:any = 123
 
@@ -87,7 +87,7 @@ any.name //不会报错
 
 **这里我不是很理解 他这句话 ——但是却不能够在它上面调用任意的方法，即便它真的有这些方法**
 
-```
+```typescript
 declare function create(o: object | null): void; // 这里全局创建了一个函数 接收对象 | null
 
 create({ prop: 0 }); // OK
@@ -102,11 +102,39 @@ create(undefined); // Error
 
 
 
+### Array
+
+对数组类型的注解
+
+```typescript
+// 2. 泛型 Array<类型> 例 Array<number>
+// 3. interface
+let arr1 = [1, 2, 3, '4'] // let arr1: (string | number)[]
+// let arr2: number[] = [1, 2, 3, '4'] // 不能将类型“string”分配给类型
+let arr3 = [1, 2, 3, 4]
+let arr4: Array<number> = [1, 2, 3, 4] //泛型描述数组
+// interface 描述数组
+interface List {
+  [index: number]: number | string
+}
+let list: List = [1, 2, 3, 4, '5']
+```
+
+
+
+### Function
+
+对函数的注解
+
+
+
+
+
 ### Void
 
 他表示的是函数没有返回值 
 
-```
+```typescript
 function test(): void{
     console.log('This is a test function');
     return undefined //返回undefined是不会报错的
@@ -121,7 +149,7 @@ function test(): void{
 
 默认情况下`null`和`undefined`是所有类型的子类型。 就是说你可以把 `null`和`undefined`赋值给`number`类型的变量。
 
-```
+```typescript
 let kong: null = null //let kong: null
 let udf: undefined = undefined //let udf: undefined
 
@@ -154,7 +182,7 @@ num4 = null
 
 `never`类型表示的是那些永不存在的值的类型———— 个人理解 ：即是永远没有办法执行完的函数 例如死循环等有问题的函数  这个值的类型就是**报错**
 
-```
+```typescript
 // 返回never的函数必须存在无法达到的终点
 function error(message: string): never {
     throw new Error(message);
@@ -176,6 +204,53 @@ function infiniteLoop(): never {
 
 ## [变量声明](https://github.com/zsczq/LEARN/blob/main/Typescript/%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E/src/index.ts)
 
+### 联合类型
+
+通过 `|` 来将变量设置多种类型 
+
+```typescript
+let lianhe: number | undefined | null | string = 123
+lianhe = undefined
+lianhe = 'sdfsf'
+lianhe = null
+// 联合类型共有的属性和方法才不会报错
+function test (param: string | number) {
+  // return param.length // 类型“string | number”上不存在属性“length”
+}
+let test2:string | number;
+test2 = '123'
+console.log(test2.length);
+test2 = 2
+// console.log(test2.length); // 类型“number”上不存在属性“length”
+```
+
+
+
+### 类型推论
+
+如果没有明确的指定类型，类型推论会帮助提供类型
+
+```typescript
+let num1 = 123 // let renyi: number
+let str1 = 'dshfus' // let str1: string
+let x = [0, 1, null] // let x: (number | null)[]
+let any; // let any: any
+```
+
+**注意：在只是声明了变量但是未赋值的情况下 变量的是为any类型的**
+
+
+
+## 接口	interface
+
+
+
+
+
+
+
+
+
 
 
 ## 类型断言
@@ -186,7 +261,7 @@ function infiniteLoop(): never {
 
 
 
-## 接口
+## 
 
 
 
