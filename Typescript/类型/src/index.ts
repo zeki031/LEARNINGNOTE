@@ -77,6 +77,7 @@ let num4: number | undefined | null = 123
 num4 = undefined
 num4 = null
 
+// about Array
 // 对数组类型的注解
 // 1. 类型[] 例 number[]
 // 2. 泛型 Array<类型> 例 Array<number>
@@ -91,6 +92,7 @@ interface List {
 }
 let list: List = [1, 2, 3, 4, '5']
 
+// about Function
 // 对函数的注解
 // 1.函数的声明
 function fn (a: number, b: number): number {
@@ -125,9 +127,70 @@ function buildName (firstName: string, lastName?: string) {
 //   return firstName + ' ' + lastName
 // }
 // 默认参数
-function buildName2(firstName: string, lastName = "Smith") { // 默认参数可以不给定类型 因为它会类型推断
-  return firstName + " " + lastName;
+function buildName2 (firstName: string, lastName = 'Smith') {
+  // 默认参数可以不给定类型 因为它会类型推断
+  return firstName + ' ' + lastName
+}
+// 传入对象的默认参数
+function buildName3 ({ a = 1 }: { a: number }) {
+  return a
 }
 
+// this和箭头函数
+let deck = {
+  suits: ['hearts', 'spades', 'clubs', 'diamonds'],
+  cards: Array(52),
+  createCardPicker: function () {
+    return function () {
+      let pickedCard = Math.floor(Math.random() * 52)
+      let pickedSuit = Math.floor(pickedCard / 13)
 
-// 剩余参数
+      // return { suit: this.suits[pickedSuit], card: pickedCard % 13 } // 报错 "this" 隐式具有类型 "any"，因为它没有类型注释
+      // 在这里的this理应为deck 因为 createCardPicker返回的函数里的this被设置成了window而不是deck对象
+      // 注意：在严格模式下， this为undefined而不是window
+      // 这里的报错直接使用箭头函数就可以解决 或者是使用interface 重新注解函数 如下
+    }
+  }
+}
+let cardPicker = deck.createCardPicker()
+let pickedCard = cardPicker()
+
+// 重新上方注解函数
+interface Card {
+  suit: string
+  card: number
+} // 这个接口的作用是定义函数的返回值类型
+interface Deck {
+  suits: string[]
+  cards: number[]
+  createCardPicker(this: Deck): () => Card
+}
+let deck2: Deck = {
+  suits: ['hearts', 'spades', 'clubs', 'diamonds'],
+  cards: Array(52),
+  // NOTE: The function now explicitly specifies that its callee must be of type Deck
+  createCardPicker: function (this: Deck) {
+    return () => {
+      let pickedCard = Math.floor(Math.random() * 52)
+      let pickedSuit = Math.floor(pickedCard / 13)
+
+      return { suit: this.suits[pickedSuit], card: pickedCard % 13 } // 这个时候this指向的所定义的interface-Deck了
+    }
+  }
+}
+
+let cardPicker2 = deck.createCardPicker()
+let pickedCard2 = cardPicker()
+
+// 函数的重载
+function reverse(a: string): string;
+function reverse(a: number): number;
+function reverse(a: string | number) {
+  if(typeof a === 'string'){
+    return a.split('').reverse().join('')
+  }
+  if(typeof a === 'number'){
+    return Number(a.toString().split('').reverse().join(''))
+  }
+}
+
