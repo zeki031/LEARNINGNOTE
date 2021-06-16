@@ -23,7 +23,7 @@ export default {
   .parent{
     height: 100%;
     .show{
-      height: 500px;
+      height: 350px;
       border: 1px dashed $bg-darkBlue;
       display: flex;
       align-items: center;
@@ -40,6 +40,9 @@ export default {
     .right{
       border: 1px dashed $bg-light;
     }
+  }
+  .detail{
+    color: rgb(255, 60, 60);
   }
 }
 *{

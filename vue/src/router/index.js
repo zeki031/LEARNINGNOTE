@@ -3,7 +3,9 @@ import VueRouter from 'vue-router';
 const Home = () => import('@/views/Home/Home.vue');
 const Vmodel = () => import('@/views/Vue/Vmodel/Vmodel.vue');
 const NotFound = () => import('@/views/Exception/NotFound.vue');
-const PropSync = () => import('@/views/vue-property-decoration/PropSync/PropSync.vue');
+const PropSync = () => import('@/views/Vue/PropSync/PropSync.vue');
+const ModelSync = () => import('@/views/Vue/ModelSync/ModelSync.vue');
+const Model = () => import('@/views/Vue/Model/Model.vue');
 Vue.use(VueRouter);
 
 const routes = [
@@ -25,6 +27,16 @@ const routes = [
         path: 'PropSync',
         name: 'PropSync',
         component: PropSync
+      },
+      {
+        path: 'Model',
+        name: 'Model',
+        component: Model
+      },
+      {
+        path: 'ModelSync',
+        name: 'ModelSync',
+        component: ModelSync
       }
     ]
   },

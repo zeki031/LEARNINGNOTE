@@ -1,7 +1,9 @@
 <template>
-  <section class="vmodel parent">
+  <section class="modelSync parent">
     <Demo>
-      <template #title></template>
+      <template #title>
+        vue-property-decoration的@ModelSync实现
+      </template>
       <template #parent></template>
       <template #child></template>
       <template #detail></template>

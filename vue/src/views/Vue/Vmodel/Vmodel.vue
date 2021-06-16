@@ -1,28 +1,31 @@
 <template>
   <section class="vmodel parent">
-    这里是vmodel实现
-    <p>左为父组件 右为子组件</p>
-    <div class="show">
-      <div class="left">
+    <Demo>
+      <template #title>
+        这里是vmodel实现
+      </template>
+      <template #parent>
         <p>{{ value }}</p>
-      </div>
-      <div class="right">
+      </template>
+      <template #child>
         <Child :value="value" @input="value = $event"></Child>
         <p>下面是vmodel绑定</p>
         <Child v-model="value"></Child>
-      </div>
-    </div>
+      </template>
+    </Demo>
   </section>
 </template>
 <script>
+import Demo from '@/components/base/Demo';
 import Child from './Child/Child';
 export default {
   components: {
-    Child
+    Child,
+    Demo
   },
   data() {
     return {
-      value: '11111'
+      value: '10'
     };
   }
 };

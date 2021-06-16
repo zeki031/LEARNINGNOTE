@@ -10,15 +10,14 @@
           <a-menu-item key="vmodel">
             <router-link to="/Home/Vmodel">v-model实现</router-link>
           </a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu
-          key="
-vue-property-decorator"
-          title="
-vue-property-decorator"
-        >
           <a-menu-item key="propSync">
             <router-link to="/Home/PropSync">@PropSync实现</router-link>
+          </a-menu-item>
+          <a-menu-item key="Model">
+            <router-link to="/Home/Model">@Model实现</router-link>
+          </a-menu-item>
+          <a-menu-item key="ModelSync">
+            <router-link to="/Home/ModelSync">@ModelSync实现</router-link>
           </a-menu-item>
         </a-sub-menu>
       </a-menu>
