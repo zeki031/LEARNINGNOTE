@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
+<script>
+// import Home from '@/views/Home/Home.vue';
+export default {
+  components: {
+    // Home
+  }
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -15,6 +19,34 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
+  .parent{
+    height: 100%;
+    .show{
+      height: 350px;
+      border: 1px dashed $bg-darkBlue;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .left, .right{
+      width: 45%;
+      padding: 20px;
+      height: 300px;
+    }
+    .left{
+      border:1px solid $bg-darkBlue;
+    }
+    .right{
+      border: 1px dashed $bg-light;
+    }
+  }
+  .detail{
+    color: rgb(255, 60, 60);
+  }
+}
+*{
+  box-sizing: border-box;
 }
 
 #nav {
